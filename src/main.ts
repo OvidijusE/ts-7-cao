@@ -1,5 +1,5 @@
 class Person {
-  constructor(private _name: string, private _surname: string, private _age?: number | string) {}
+  constructor(private _name: string, private _surname: string, private _age?: number) {}
 
   set name(name: string) {
     this._name = name;
@@ -14,7 +14,7 @@ class Person {
       console.log('blogas age');
       throw new Error('blogas age');
     }
-    if (age % 2 === 0) {
+    if (age % 1 !== 0) {
       console.log('blogas age, turi buti sveikas skaicius');
       throw new Error('blogas age');
     }
@@ -26,8 +26,8 @@ class Person {
     return `${this._name} ${this._surname}`;
   }
 
-  get ageYear(): number {
-    return `${this._age}`;
+  get ageYear(): number | undefined {
+    return this._age;
   }
 }
 
@@ -45,8 +45,8 @@ console.group(
   '2. Sukurkite Person klasei savybę "age". Inkapsuliuokite šią savybę taip, jog reikšmė galėtų būti tik sveiki skaičiai nuo 1 iki 150'
 );
 {
-  const p1 = new Person('Serverijus', 'Serbentautas', 30);
-  console.log('age = ', p1.ageYear);
+  const p2 = new Person('Juozas', 'Juozaitis', 160);
+  console.log('age = ', p2.ageYear);
 }
 console.groupEnd();
 
